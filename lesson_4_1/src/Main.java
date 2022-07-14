@@ -4,14 +4,11 @@ public class Main {
     public static int bossHealth = 650;
     public static int bossDamage = 50;
     public static String bossDefence;
-    public static int[] heroesHealth = {270, 260, 250};
-    public static int[] heroesDamage = {10, 15, 20};
-    public static String[] heroesAttackType = {"Physical", "Magical", "Kinetic"};
-    public static int[] health= {280};
-    public static String[] healer = {"Medic"};
-    public static int[] MedicHealer= {0};
-    public static String Medic;
+    public static int[] heroesHealth = {270, 260, 250, 280};
+    public static int[] heroesDamage = {10, 15, 20 , 0};
+    public static String[] heroesAttackType = {"Physical", "Magical", "Kinetic" , "Medic"};
     public static int round_number = 0;
+    public static String healing;
 
     public static void main(String[] args) {
         printStatistics();
@@ -30,9 +27,9 @@ public class Main {
         setHealHeroes();
         chooseDefence();
         bossHits();
-        bossHits1();
         heroesHit();
         printStatistics();
+        healing();
     }
 
     public static void bossHits() {
@@ -45,18 +42,6 @@ public class Main {
                 }
             }
 
-        }
-    }
-    public static void bossHits1() {
-        for (int i = 0; i < health.length; i++) {
-            if (health[i] > 0){
-                if (health[i] - bossDamage <0){
-                    health[i] = 0;
-                }
-                else  {
-                    health[i] = (health[i] - bossDamage);
-                }
-            }
         }
     }
     public static void heroesHit() {
@@ -95,18 +80,11 @@ public class Main {
         }
         return allHeroesDead;
     }
-
     public static void printStatistics() {
-
         System.out.println("ROUND " + round_number + "  _________________");
         System.out.println("Boss health: " + bossHealth + "; damage: " + bossDamage);
-        for (int i = 0; i < healer.length; i++) {
-            System.out.println(healer[i] + " health: " + health[i]
-            + "; damage: " + MedicHealer[i] );
         }
-
-
-        }{
+        public static void healing (){
         for (int i = 0; i < heroesHealth.length; i++) {
             System.out.println(heroesAttackType[i] + " health: " + heroesHealth[i]
                     + "; damage: " + heroesDamage[i]);
@@ -115,7 +93,7 @@ public class Main {
     public static void setHealHeroes() {
         Random random = new Random();
         int randomReflex = random.nextInt(heroesAttackType.length);
-        Medic = heroesAttackType[randomReflex];
+        healing = heroesAttackType[randomReflex];
         random = new Random();
         int heroy = random.nextInt(101);
 
